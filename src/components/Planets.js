@@ -16,7 +16,12 @@ const Planets = () => {
 
   return (
     <div>
-      <h2>Planets</h2>
+      {status === "error" && <p> there was an error</p>}
+      {status === "loading" && <p> Loading....</p>}
+      {status === "success" &&
+        planets.results.map((planet) => (
+          <h2 key={planet.name}>{planet.name}</h2>
+        ))}
     </div>
   );
 };
