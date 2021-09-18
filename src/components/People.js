@@ -1,13 +1,16 @@
 import React from "react";
 import { useQuery } from "react-query";
+import { fetchPeoples } from "../hooks/useFetch";
 
-const fetchPeoples = async () => {
-  const res = await fetch(`https://swapi.dev/api/people`);
-  return res.json();
-};
+// const fetchPeoples = async () => {
+//   const res = await fetch(`https://swapi.dev/api/people`);
+//   return res.json();
+// };
 
 const Peoples = () => {
-  const { data: peoples, status } = useQuery("peoples", fetchPeoples);
+  const { data: peoples, status } = useQuery("peoples", () =>
+    fetchPeoples(`https://swapi.dev/api/people`)
+  );
 
   console.info(peoples);
   console.info(status);
